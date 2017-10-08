@@ -1,0 +1,18 @@
+<html>
+<head>
+<link rel="stylesheet" href='/static/style.css' />
+<!--<meta http-equiv="refresh" content="2" >-->
+
+<script language="JavaScript"><!--
+function refreshIt() {
+   if (!document.images) return;
+   document.images['myImg'].src = "{{ url_for('plot_image',start=start,end=end) }}" + '?' + Math.random();
+   setTimeout('refreshIt()',2000); // refresh every 5 secs
+}
+//--></script>
+</head>
+<body onLoad=" setTimeout('refreshIt()',2000)">
+<h1>Stream</h1>
+<img src="{{ url_for('plot_image',start=start,end=end) }}" name="myImg">
+</body>
+</html>

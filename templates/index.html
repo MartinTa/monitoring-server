@@ -1,0 +1,46 @@
+<html>
+<head>
+<link rel="stylesheet" href='/static/style.css' />
+<meta http-equiv="refresh" content="60" >
+</head>
+<body>
+<h1>Glovebox monitoring system, {{glovebox_name}}</h1>
+<p>  </p>
+<table>
+{% for row_index in range(key|count) %}
+    <tr>
+      <td>{{ key[row_index] }}</td>
+      <td>{{ value[row_index] }}</td>
+    </tr>
+{% endfor %}
+</table>
+<p>  </p>
+<form action="{{ url_for('index')}}" method="POST">
+    <input type="submit" value="Plot data" />
+of last
+<select name="timespan">
+    <option value="86400">day</option>
+    <option value="604800">week</option>
+    <option value="2678400">month</option>  
+    <option value="31536000">year</option>          
+</select>
+using a resolution of
+<select name="resolution">
+    <option value="3600">1 hour</option>
+    <option value="60" selected="selected">1 minute</option>
+    <option value="1">1 second</option>           
+</select> for analog data
+</form>
+<form action="{{ url_for('stream') }}">
+    <input type="submit" value="Livestream data!" />
+</form>
+<form action="{{ url_for('rpimonitor') }}">
+    <input type="submit" value="RPi-Monitor" />
+</form>
+<p><a class="button" href="{{database_path_analog}}" >Download all analog data!</a></p>
+<p><a class="button" href="{{datafile_path_digital}}" >Download all digital data!</a></p>
+<form action="{{ url_for('info_about') }}">
+    <input type="submit" value="info/about" />
+</form>
+</body>
+</html>

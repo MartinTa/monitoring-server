@@ -1,0 +1,19 @@
+<html>
+<head>
+<link rel="stylesheet" href='/static/style.css' />
+</head>
+<body>
+<h1>Info/about</h1>
+<p class="jus">
+The index page shows only the most important information, the current state of all inputs as plain text and links to more data intensive features. The analog inputs of the Raspberry Pi are measured 10 times per second and the average over each second is stored in a round robin database, which contains a year of data with the resolution of one second, one minute and one hour. This allows fast plotting of the gathered data over different time spans and resolutions. The digital input is measured   also ten times per second and only changes in the measured boolean values are stored in a plain text file with a time stamp. This allows sub second registration of input changes and still holding the produced amount of data at a minimum. This method works great as long as the measurement process is reliably measuring. The up-time of the measurement process is easily seen in the analog data, since in this case the rrd database contains nan values if it is not updated at that moment in time.</p>
+
+<p class="jus">The “Plot data” button plots all data within the desired timespan and with the chosen resolution. The timespan can be chosen without restriction by changing the url after clicking the button. The resolution has to be either 1, 60 or 3600 seconds.</p>
+
+<p class="jus">The config.py file in the project folder contains information about the basic setting of this applications. It also defines when and to whom alarm emails are sent if the Argon pressure drops below a defined value.</p>
+
+<p class="jus">This application was written using the <a href="https://www.python.org/">Python</a> programming language (Python 3.4) 
+and a bit of html. It makes use of <a href="http://flask.pocoo.org/">flask</a> to serve the individual pages, 
+<a href="http://bokeh.pydata.org/en/latest/">bokeh</a> for the interactive plots and the livestream and <a href="http://oss.oetiker.ch/rrdtool/">rrdtool</a>
+for storing the analog data in a round robin database. Additionally a link to <a href="http://elinux.org/RPi-Monitor">RPi-Monitor</a> allows to check the state of the Raspberry Pi itself.</p>
+</body>
+</html>
